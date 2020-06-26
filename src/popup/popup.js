@@ -2,11 +2,13 @@
 
 let openPlaylistPage = false;
 let disablePolymer = false;
+let shuffle_playlist = false;
 loadSettings();
 
 async function loadSettings() {
   openPlaylistPage = await loadOption("open_playlist_page", openPlaylistPage);
   disablePolymer = await loadOption("disable_polymer", disablePolymer);
+  shuffle_playlist = await loadOption("shuffle_playlist", shuffle_playlist);
 }
 
 /**
@@ -207,6 +209,9 @@ async function createPlaylist(videoIds) {
   if (videoIds.length == 0) {
     return;
   }
+  if (shuffle_playlist){
+    videoIds = shuffle(videoIds);
+  }
   var url =
     "https://www.youtube.com/watch_videos?video_ids=" + videoIds.join(",");
   if (openPlaylistPage) {
@@ -257,3 +262,19 @@ async function alert(message) {
     iconUrl: "../icons/icon_48.png",
   });
 }
+
+/**
+ * @param {Array<string>} array
+ */
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+

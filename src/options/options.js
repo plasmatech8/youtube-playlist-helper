@@ -23,11 +23,9 @@ var CheckBoxOption = (function () {
   return CheckBoxOption;
 })();
 
-const OPEN_PLAYLIST_PAGE_OPTION = new CheckBoxOption(
-  "open_playlist_page",
-  false
-);
+const OPEN_PLAYLIST_PAGE_OPTION = new CheckBoxOption("open_playlist_page", false);
 const DISABLE_POLYMER_OPTION = new CheckBoxOption("disable_polymer", false);
+const SHUFFLE_PLAYLIST = new CheckBoxOption("shuffle_playlist", false);
 
 /**
  * @param  {Event} e
@@ -36,11 +34,13 @@ function saveOptions(e) {
   e.preventDefault();
   OPEN_PLAYLIST_PAGE_OPTION.save();
   DISABLE_POLYMER_OPTION.save();
+  SHUFFLE_PLAYLIST.save();
 }
 
 function restoreOptions() {
   OPEN_PLAYLIST_PAGE_OPTION.restore();
   DISABLE_POLYMER_OPTION.restore();
+  SHUFFLE_PLAYLIST.restore();
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
