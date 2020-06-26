@@ -171,7 +171,7 @@ function closeTabs(tabs) {
  *            Parsing
  ***********************************/
 
-const youtubeRegexPattern = /(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?\S*(?:watch|embed)?(?:(?:(?=\/[^&\s\?]+(?!\S))\/)|(?:\S*v=|v\/))([^&\s\?]+)/
+const youtubeRegexPattern = /(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?\S*(?:watch|embed)(?:(?:(?=\/[^&\s\?]+(?!\S))\/)|(?:\S*v=|v\/))([^&\s\?]+)/
   .source;
 
 /**
